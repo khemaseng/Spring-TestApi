@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface UserService {
+
     List<UserResponse> getAll();
     Page<UserResponse> getAllWithPaging(int pageNumber, int pageSize);
     UserResponse getById(UUID id);
