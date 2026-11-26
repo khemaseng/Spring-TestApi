@@ -19,9 +19,21 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+    // Source: https://mvnrepository.com/artifact/org.mapstruct/mapstruct
+    compileOnly("org.mapstruct:mapstruct:1.6.3")
+    // Source: https://mvnrepository.com/artifact/org.mapstruct/mapstruct-processor
+    annotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+    // Source: https://mvnrepository.com/artifact/org.projectlombok/lombok-mapstruct-binding
+    annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
+
+    // 4. Database Driver (Only needed at runtime when connecting to DB)
+    runtimeOnly 'org.postgresql:postgresql'
+    // 3. Spring Data JPA & Hibernate (ORM for Database)
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
     testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
     testCompileOnly 'org.projectlombok:lombok'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
@@ -31,3 +43,14 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+//dependencies {
+//    // Core Web MVC + Embedded Tomcat Server[cite: 27]
+//    implementation 'org.springframework.boot:spring-boot-starter-web'
+//
+//    // Bean Validation (@NotBlank, @Email, @Size, @Valid)[cite: 31]
+//    implementation 'org.springframework.boot:spring-boot-starter-validation'
+//
+//    // Lombok (@Data, @AllArgsConstructor, @NoArgsConstructor, @RequiredArgsConstructor)[cite: 33, 35]
+//    compileOnly 'org.projectlombok:lombok'
+//    annotationProcessor 'org.projectlombok:lombok'
+//}

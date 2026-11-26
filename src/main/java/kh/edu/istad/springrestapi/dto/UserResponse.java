@@ -1,4 +1,11 @@
 package kh.edu.istad.springrestapi.dto;
 
-public class UserResponse {
+import java.util.UUID;
+
+public record UserResponse(
+        UUID id,
+        String username,
+        String email,
+        Boolean isActive
+) {
 }
